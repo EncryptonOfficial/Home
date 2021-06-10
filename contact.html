@@ -140,12 +140,11 @@
                 <iframe
                 src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Bhagabanpur,%20diamond%20harbour+(Encrypton%20Official)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                 height="460" style="border:0;" allowfullscreen=""></iframe>
-
-                
             </div>
-            <!------------------
+
+            
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col">
                     <div class="contact__form__text">
                         <div class="section-title">
                             <span>Form</span>
@@ -157,18 +156,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col">
                     <div class="contact__form">
-                        <form action="#">
+                        <form method="post" autocomplete="off" name="submit-to-google-sheet">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input type="text" placeholder="Name">
+                                    <input type="text" placeholder="Name *" name="name" value="" required />
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input type="text" placeholder="Email">
+                                    <input type="number"  placeholder="Phone Number *" name="phoneNumber" value="" required />
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea placeholder="Message *"  name="message" value="" required></textarea>
                                     <button type="submit" class="site-btn">Send Message</button>
                                 </div>
                             </div>
@@ -176,7 +175,10 @@
                     </div>
                 </div>
             </div>
-            ------------------>
+            
+
+
+
         </div>
     </section>
     <!-- Contact Section End -->
@@ -281,6 +283,19 @@
     </div>
 </footer>
 <!-- Footer Section End -->
+<!-------Contact form submit to google sheet ------Start Script------>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyAm4GZeSon-Xj22wjrlVV96lYzPoZ8S_I7WoOBITksO020h2E1LWwKNImAL9vDs0oc/exec'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+<!-------Contact form submit to google sheet ------End Script------>
 
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
